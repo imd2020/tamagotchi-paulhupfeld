@@ -1,0 +1,2 @@
+function hallo() {}
+export { hallo };
