@@ -1,6 +1,7 @@
 import Button from "./Button.js";
 import NextYearButton from "./NextYearButton.js";
 import Tree from "./Tree";
+import dayOneNature from "./dayOneNature";
 
 let buttons = [
   new Button(45, 465, "Bäume pflanzen"),
@@ -14,9 +15,9 @@ let buttons = [
 class Mainscreen {
   constructor() {
     this.year = 2021;
+    this.nextYear = true;
   }
 
-  
   landscape() {
     background(176, 226, 255);
     fill(237, 190, 130);
@@ -46,16 +47,20 @@ class Mainscreen {
     });
   }
 
-  displayClicked() {
-    console.log("clicked");
-    this.landscape();
+  displayNextYear() {
+    if (this.nextYear) {
+      this.landscape();
 
-    trees.forEach((tree) => {
-      tree.display();
-    });
+      trees.forEach((tree) => {
+        tree.display();
+      });
 
-    this.hotbar();
-    this.actualYear();
+      dayOneNature.display();
+
+      this.hotbar();
+      this.actualYear();
+      this.nextYear = false;
+    }
   }
 
   displayDraw() {
@@ -66,7 +71,7 @@ class Mainscreen {
 let mainscreen = new Mainscreen();
 
 function mousePressed() {
-  clear();
+  // clear();
 
   buttons.forEach((button) => {
     if (button.hitTest()) {
@@ -77,19 +82,12 @@ function mousePressed() {
   // trees.forEach((tree) => {
   //   console.log("is " + tree.laysDown);
   // });
-
-  mainscreen.displayClicked();
-  mainscreen.displayClicked();
 }
 
 function draw() {
   mainscreen.displayDraw();
 
-  // if (mouseIsPressed) {
-  //   trees.forEach((tree) => {
-  //     tree.kill();
-  //   });
-  // }
+  mainscreen.displayNextYear();
+
+  // console.log(mainscreen.nextYear);
 }
-
-

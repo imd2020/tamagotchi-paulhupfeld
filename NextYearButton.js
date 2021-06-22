@@ -14,13 +14,12 @@ export default class NextYearButton extends Button {
       fill(44, 149, 44);
     } else {
       mainscreen.year++;
-      // console.log(mainscreen.year);
-      // this.pressed = false;
+      mainscreen.nextYear = true;
 
       buttons.forEach((button) => {
         if (button.message === "Bäume roden" && button.pressed) {
           trees.forEach((tree) => {
-            tree.laysDown = true;
+            tree.kill();
             console.log("kill");
           });
         }

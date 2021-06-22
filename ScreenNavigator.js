@@ -22,31 +22,39 @@ class ScreenNavigator {
     }
   }
 
-
-  
   display() {
     if (this.actualScreen === "startscreen") {
       this.startScreen();
     } else if (this.actualScreen === "mainscreen") {
       mainscreen.displayDraw();
-      mainscreen.displayClicked();
+      mainscreen.displayNextYear();
     }
   }
 }
 
 let screenNavigator = new ScreenNavigator();
 
-function draw() {
-  clear();
-  // console.log("test");
-  //Screens
-  screenNavigator.display();
+// function draw() {
+//   clear();
+//   // console.log("test");
+//   //Screens
+//   screenNavigator.display();
 
-  // boom1.test();
-}
+//   // boom1.test();
+// }
+
+// function mousePressed() {
+//   buttons.forEach((button) => {
+//     if (button.hitTest()) {
+//       button.pressed = !button.pressed;
+//     }
+//   });
+
+//   mainscreen.displayNextYear();
+// }
 
 function mousePressed() {
-  clear();
+  // clear();
 
   buttons.forEach((button) => {
     if (button.hitTest()) {
@@ -54,5 +62,21 @@ function mousePressed() {
     }
   });
 
-  mainscreen.displayClicked();
+  // trees.forEach((tree) => {
+  //   console.log("is " + tree.laysDown);
+  // });
+}
+
+function draw() {
+  clear();
+  screenNavigator.display();
+
+  // mainscreen.displayNextYear();
+
+  // if (mouseIsPressed) {
+  //   trees.forEach((tree) => {
+  //     tree.kill();
+  //   });
+  // }
+  console.log(mainscreen.nextYear);
 }

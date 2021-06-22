@@ -28,7 +28,7 @@ export default class Tree {
 
   kill(r) {
     r = Math.random();
-    console.log("kill");
+    // console.log("kill");
     if (r < 0.5) {
       this.laysDown = true;
     }
