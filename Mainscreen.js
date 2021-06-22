@@ -17,8 +17,7 @@ let buttons = [
 class Mainscreen {
   constructor() {
     this.year = 2021;
-    this.nextYear = false;
-    this.firstYear = true;
+    this.nextYear = true;
   }
 
   landscape() {
@@ -28,11 +27,11 @@ class Mainscreen {
     ellipse(300, 5000, 9700);
   }
 
-  actualYear() {
+  yearCounter() {
     fill(0);
     textAlign(LEFT);
-    textSize(22);
-    text(mainscreen.year, 10, 20);
+    textSize(18);
+    text("Aktuelles Jahr: " + mainscreen.year, 10, 20);
   }
 
   hotbar() {
@@ -56,7 +55,7 @@ class Mainscreen {
       dayOneNature.display();
 
       this.hotbar();
-      this.actualYear();
+      this.yearCounter();
       this.nextYear = false;
     }
   }
@@ -70,7 +69,7 @@ class Mainscreen {
         if (button.message === "Bäume roden" && button.pressed) {
           trees.forEach((tree) => {
             tree.kill();
-            console.log("kill");
+            // console.log("kill");
           });
         }
       });
@@ -80,25 +79,6 @@ class Mainscreen {
       });
       nextYearButton.newYear = false;
     }
-  }
-
-  displayFirstYear() {
-    console.log(this.nextYear);
-    this.landscape();
-
-    trees.forEach((tree) => {
-      tree.display();
-    });
-
-    dayOneNature.display();
-
-    this.hotbar();
-    this.actualYear();
-    this.firstYear = false;
-  }
-
-  displayDraw() {
-    this.hotbar();
   }
 }
 
@@ -129,18 +109,10 @@ function draw() {
     dayOneNature = new DayOneNature();
     start = false;
   }
-  mainscreen.displayDraw();
-
-  mainscreen.resetScreen();
-
+  mainscreen.hotbar();
   mainscreen.displayNextYear();
 
-  // console.log(mainscreen.firstYear);
-  if (mainscreen.firstYear === true) {
-    mainscreen.displayFirstYear();
-  }
-
-  // console.log(mainscreen.nextYear);
+  mainscreen.resetScreen();
 }
 
 window.draw = draw;

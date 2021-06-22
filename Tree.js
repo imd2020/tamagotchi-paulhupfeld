@@ -33,6 +33,7 @@ export default class Tree {
     // console.log("kill");
     if (r < 0.5) {
       this.laysDown = true;
+      console.log("kill");
     }
   }
 
@@ -57,7 +58,6 @@ export default class Tree {
         scale(0.11);
 
         image(this.tree, 0, 0);
-        // console.log("ganz");
       }
     } else {
       pop();
