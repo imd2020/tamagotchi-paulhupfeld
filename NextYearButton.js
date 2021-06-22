@@ -7,7 +7,7 @@ export default class NextYearButton extends Button {
     this.y = y;
     this.message = message;
     this.pressed = false;
-    this.newYear = false;
+    this.newYear = true;
   }
 
   display() {
@@ -16,6 +16,7 @@ export default class NextYearButton extends Button {
     } else {
       this.newYear = true;
     }
+
     noStroke();
     rect(this.x, this.y, 150, 40);
     fill(0);

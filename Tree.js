@@ -13,37 +13,43 @@ export default class Tree {
     this.stump = stump;
   }
 
-  setUp(r) {
+  setUpNewTrees(r) {
     r = Math.random();
-    // console.log("r = " + r);
     if (r < 0.5) {
-      this.randomParameters();
-      // console.log(r);
+      this.giveRandomParameters();
       this.existing = true;
     }
   }
 
-  randomParameters() {
+  giveRandomParameters() {
     this.x = random(-50, 640);
     this.y = random(160, 360);
+
+    // trage in array ein
   }
 
-  kill(r) {
+  killTrees(r) {
     r = Math.random();
-    // console.log("kill");
     if (r < 0.5) {
       this.laysDown = true;
-      console.log("kill");
     }
   }
 
-  getOlder() {
-    this.age++;
+  // getOlder() {
+  //   this.age++;
+  // }
+
+  placeItem(x, y, s, i) {
+    push();
+    translate(x - i.width / 20, y - i.height / 10);
+    scale(s);
+    image(i, 0, 0);
+    pop();
   }
 
   display() {
     if (this.existing === false) {
-      this.setUp();
+      this.setUpNewTrees();
     }
 
     push();
@@ -58,9 +64,9 @@ export default class Tree {
         scale(0.11);
 
         image(this.tree, 0, 0);
+        pop();
       }
     } else {
-      pop();
       push();
       translate(this.x - 6, this.y - 5);
       scale(0.03);
@@ -70,16 +76,3 @@ export default class Tree {
     pop();
   }
 }
-
-// function draw() {
-//   clear();
-//   trees.forEach((tree) => {
-//     tree.display();
-//   });
-
-//   if (mouseIsPressed) {
-//     trees.forEach((tree) => {
-//       tree.kill();
-//     });
-//   }
-// }

@@ -17,24 +17,23 @@ let buttons = [
 class Mainscreen {
   constructor() {
     this.year = 2021;
-    this.nextYear = true;
   }
 
-  landscape() {
+  displayBackground() {
     background(176, 226, 255);
     fill(237, 190, 130);
     noStroke();
     ellipse(300, 5000, 9700);
   }
 
-  yearCounter() {
+  displayYearCounter() {
     fill(0);
     textAlign(LEFT);
     textSize(18);
     text("Aktuelles Jahr: " + mainscreen.year, 10, 20);
   }
 
-  hotbar() {
+  displayHotbar() {
     fill(255, 239, 219);
     stroke(1);
     rect(30, 452, 540, 121, 8);
@@ -43,42 +42,27 @@ class Mainscreen {
     });
   }
 
-  displayNextYear() {
-    if (this.nextYear) {
-      // console.log(this.nextYear);
-      this.landscape();
+  readButtons() {
+    buttons.forEach((button) => {
+      if (button.message === "Bäume roden" && button.pressed) {
+        trees.forEach((tree) => {
+          tree.killTrees();
+        });
+      }
+    });
 
-      trees.forEach((tree) => {
-        tree.display();
-      });
-
-      dayOneNature.display();
-
-      this.hotbar();
-      this.yearCounter();
-      this.nextYear = false;
-    }
+    buttons.forEach((button) => {
+      button.pressed = false;
+    });
   }
 
-  resetScreen() {
+  refreshScreen() {
     if (nextYearButton.newYear) {
-      screen.year++;
-      screen.nextYear = true;
+      this.year++;
 
-      buttons.forEach((button) => {
-        if (button.message === "Bäume roden" && button.pressed) {
-          trees.forEach((tree) => {
-            tree.kill();
-            // console.log("kill");
-          });
-        }
-      });
+      this.readButtons();
 
-      buttons.forEach((button) => {
-        button.pressed = false;
-      });
-
-      this.landscape();
+      this.displayBackground();
 
       trees.forEach((tree) => {
         tree.display();
@@ -86,7 +70,7 @@ class Mainscreen {
 
       dayOneNature.display();
 
-      this.yearCounter();
+      this.displayYearCounter();
 
       nextYearButton.newYear = false;
     }
@@ -96,17 +80,11 @@ class Mainscreen {
 let mainscreen = new Mainscreen();
 
 function mousePressed() {
-  // clear();
-
   buttons.forEach((button) => {
     if (button.hitTest()) {
       button.pressed = !button.pressed;
     }
   });
-
-  // trees.forEach((tree) => {
-  //   console.log("is " + tree.laysDown);
-  // });
 }
 
 let start = true;
@@ -120,10 +98,9 @@ function draw() {
     dayOneNature = new DayOneNature();
     start = false;
   }
-  mainscreen.hotbar();
-  mainscreen.displayNextYear();
 
-  mainscreen.resetScreen();
+  mainscreen.displayHotbar();
+  mainscreen.refreshScreen();
 }
 
 window.draw = draw;
