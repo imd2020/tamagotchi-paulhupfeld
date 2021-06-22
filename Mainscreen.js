@@ -1,7 +1,7 @@
 import Button from "./Button.js";
 import NextYearButton from "./NextYearButton.js";
 import Tree from "./Tree";
-import dayOneNature from "./dayOneNature";
+import DayOneNature from "./DayOneNature";
 
 let buttons = [
   new Button(45, 465, "Bäume pflanzen"),

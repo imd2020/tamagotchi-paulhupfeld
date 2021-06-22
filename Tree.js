@@ -23,7 +23,7 @@ export default class Tree {
 
   randomParameters() {
     this.x = random(-50, 640);
-    this.y = random(160, 400);
+    this.y = random(160, 360);
   }
 
   kill(r) {
