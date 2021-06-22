@@ -1,8 +1,10 @@
+import { deko, stone1, stone2 } from "./HTML/p5setup.js";
+
 export default class DayOneNature {
   constructor() {
-    this.deko = loadImage("./images/deko.png");
-    this.stone1 = loadImage("./images/stone1.png");
-    this.stone2 = loadImage("./images/stone2.png");
+    this.deko = deko;
+    this.stone1 = stone1;
+    this.stone2 = stone2;
   }
 
   placeItem(x, y, s, i) {
@@ -26,8 +28,6 @@ export default class DayOneNature {
     this.neverDyingItems();
   }
 }
-
-let dayOneNature = new DayOneNature();
 
 function draw() {
   dayOneNature.display();

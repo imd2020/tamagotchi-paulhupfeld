@@ -7,27 +7,14 @@ export default class NextYearButton extends Button {
     this.y = y;
     this.message = message;
     this.pressed = false;
+    this.newYear = false;
   }
 
   display() {
     if (this.pressed === false) {
       fill(44, 149, 44);
     } else {
-      mainscreen.year++;
-      mainscreen.nextYear = true;
-
-      buttons.forEach((button) => {
-        if (button.message === "Bäume roden" && button.pressed) {
-          trees.forEach((tree) => {
-            tree.kill();
-            console.log("kill");
-          });
-        }
-      });
-
-      buttons.forEach((button) => {
-        button.pressed = false;
-      });
+      this.newYear = true;
     }
     noStroke();
     rect(this.x, this.y, 150, 40);

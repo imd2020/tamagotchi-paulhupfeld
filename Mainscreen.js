@@ -1,7 +1,9 @@
 import Button from "./Button.js";
 import NextYearButton from "./NextYearButton.js";
-import Tree from "./Tree";
-import DayOneNature from "./DayOneNature";
+import Tree from "./Tree.js";
+import DayOneNature from "./DayOneNature.js";
+
+let nextYearButton = new NextYearButton(405, 520, "Nächstes Jahr");
 
 let buttons = [
   new Button(45, 465, "Bäume pflanzen"),
@@ -9,13 +11,14 @@ let buttons = [
   new Button(405, 465, "Rasen mähen"),
   new Button(45, 520, "Bäume roden"),
   new Button(225, 520, "Jäger holen"),
-  new NextYearButton(405, 520, "Nächstes Jahr"),
+  nextYearButton,
 ];
 
 class Mainscreen {
   constructor() {
     this.year = 2021;
-    this.nextYear = true;
+    this.nextYear = false;
+    this.firstYear = true;
   }
 
   landscape() {
@@ -32,12 +35,6 @@ class Mainscreen {
     text(mainscreen.year, 10, 20);
   }
 
-  nextYear() {
-    mainscreen.displayClicked();
-    mainscreen.displayClicked();
-    console.log("here");
-  }
-
   hotbar() {
     fill(255, 239, 219);
     stroke(1);
@@ -49,6 +46,7 @@ class Mainscreen {
 
   displayNextYear() {
     if (this.nextYear) {
+      // console.log(this.nextYear);
       this.landscape();
 
       trees.forEach((tree) => {
@@ -61,6 +59,42 @@ class Mainscreen {
       this.actualYear();
       this.nextYear = false;
     }
+  }
+
+  resetScreen() {
+    if (nextYearButton.newYear) {
+      screen.year++;
+      screen.nextYear = true;
+
+      buttons.forEach((button) => {
+        if (button.message === "Bäume roden" && button.pressed) {
+          trees.forEach((tree) => {
+            tree.kill();
+            console.log("kill");
+          });
+        }
+      });
+
+      buttons.forEach((button) => {
+        button.pressed = false;
+      });
+      nextYearButton.newYear = false;
+    }
+  }
+
+  displayFirstYear() {
+    console.log(this.nextYear);
+    this.landscape();
+
+    trees.forEach((tree) => {
+      tree.display();
+    });
+
+    dayOneNature.display();
+
+    this.hotbar();
+    this.actualYear();
+    this.firstYear = false;
   }
 
   displayDraw() {
@@ -84,10 +118,30 @@ function mousePressed() {
   // });
 }
 
+let start = true;
+
+let trees;
+let dayOneNature;
+
 function draw() {
+  if (start) {
+    trees = [new Tree(), new Tree(), new Tree(), new Tree(), new Tree()];
+    dayOneNature = new DayOneNature();
+    start = false;
+  }
   mainscreen.displayDraw();
+
+  mainscreen.resetScreen();
 
   mainscreen.displayNextYear();
 
+  // console.log(mainscreen.firstYear);
+  if (mainscreen.firstYear === true) {
+    mainscreen.displayFirstYear();
+  }
+
   // console.log(mainscreen.nextYear);
 }
+
+window.draw = draw;
+window.mousePressed = mousePressed;

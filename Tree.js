@@ -1,3 +1,5 @@
+import { tree, stump } from "./HTML/p5setup.js";
+
 export default class Tree {
   constructor() {
     this.existing = false;
@@ -7,8 +9,8 @@ export default class Tree {
     this.age = 0;
     this.laysDown = false;
 
-    this.tree = loadImage("./images/tree1.png");
-    this.stump = loadImage("./images/stump.png");
+    this.tree = tree;
+    this.stump = stump;
   }
 
   setUp(r) {
@@ -46,10 +48,17 @@ export default class Tree {
     push();
 
     if (this.laysDown === false) {
-      translate(this.x - this.tree.width / 20, this.y - this.tree.height / 10);
-      scale(0.11);
-      image(this.tree, 0, 0);
-      // console.log("ganz");
+      if (this.tree) {
+        translate(
+          this.x - this.tree.width / 20,
+          this.y - this.tree.height / 10
+        );
+
+        scale(0.11);
+
+        image(this.tree, 0, 0);
+        // console.log("ganz");
+      }
     } else {
       pop();
       push();
@@ -62,17 +71,15 @@ export default class Tree {
   }
 }
 
-let trees = [new Tree(), new Tree(), new Tree(), new Tree(), new Tree()];
+// function draw() {
+//   clear();
+//   trees.forEach((tree) => {
+//     tree.display();
+//   });
 
-function draw() {
-  clear();
-  trees.forEach((tree) => {
-    tree.display();
-  });
-
-  if (mouseIsPressed) {
-    trees.forEach((tree) => {
-      tree.kill();
-    });
-  }
-}
+//   if (mouseIsPressed) {
+//     trees.forEach((tree) => {
+//       tree.kill();
+//     });
+//   }
+// }
