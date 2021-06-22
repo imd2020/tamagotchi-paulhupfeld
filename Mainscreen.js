@@ -44,6 +44,14 @@ class Mainscreen {
 
   readButtons() {
     buttons.forEach((button) => {
+      //Bäume pflanzen
+      if (button.message === "Bäume pflanzen" && button.pressed) {
+        trees.forEach((tree) => {
+          tree.plantTrees();
+        });
+      }
+
+      //Bäume roden
       if (button.message === "Bäume roden" && button.pressed) {
         trees.forEach((tree) => {
           tree.killTrees();
@@ -94,7 +102,31 @@ let dayOneNature;
 
 function draw() {
   if (start) {
-    trees = [new Tree(), new Tree(), new Tree(), new Tree(), new Tree()];
+    // for (let i; i++; i <= 20) {
+    //   trees.push(new Tree());
+    // }
+    trees = [
+      new Tree(),
+      new Tree(),
+      new Tree(),
+      new Tree(),
+      new Tree(),
+      new Tree(),
+      new Tree(),
+      new Tree(),
+      new Tree(),
+      new Tree(),
+      new Tree(),
+      new Tree(),
+      new Tree(),
+      new Tree(),
+      new Tree(),
+      new Tree(),
+      new Tree(),
+      new Tree(),
+      new Tree(),
+      new Tree(),
+    ];
     dayOneNature = new DayOneNature();
     start = false;
   }

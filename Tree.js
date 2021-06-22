@@ -7,20 +7,14 @@ export default class Tree {
     this.x = -100;
     this.y = -100;
     this.age = 0;
-    this.laysDown = false;
 
+    this.plant = false;
+    this.kill = false;
+
+    this.laysDown = false;
     this.tree = tree;
     this.stump = stump;
   }
-
-  setUpNewTrees(r) {
-    r = Math.random();
-    if (r < 0.5) {
-      this.giveRandomParameters();
-      this.existing = true;
-    }
-  }
-
   giveRandomParameters() {
     this.x = random(-50, 640);
     this.y = random(160, 360);
@@ -28,16 +22,43 @@ export default class Tree {
     // trage in array ein
   }
 
-  killTrees(r) {
-    r = Math.random();
-    if (r < 0.5) {
-      this.laysDown = true;
-    }
+  plantTrees() {
+    this.plant = true;
   }
 
-  // getOlder() {
-  //   this.age++;
-  // }
+  plantTreesAutomaticly(r) {
+    if (this.existing === false) {
+      r = Math.random();
+      if ((this.plant && r < 0.4) || r < 0.1) {
+        this.giveRandomParameters();
+        this.laysDown = false;
+        this.existing = true;
+        this.plant = false;
+      }
+    }
+    this.plant = false;
+  }
+
+  killTrees(r) {
+    this.kill = true;
+  }
+
+  killTreesAutomaticly(r) {
+    r = Math.random();
+    if ((this.kill && r < 0.5) || r < 0.5) {
+      this.laysDown = true;
+      this.age = 0;
+    }
+    this.kill = false;
+  }
+
+  getOlder() {
+    this.age++;
+
+    if (this.laysDown && this.age === 3) {
+      this.existing = false;
+    }
+  }
 
   placeItem(x, y, s, i) {
     push();
@@ -48,31 +69,22 @@ export default class Tree {
   }
 
   display() {
-    if (this.existing === false) {
-      this.setUpNewTrees();
-    }
+    this.getOlder();
 
-    push();
+    this.killTreesAutomaticly();
+    this.plantTreesAutomaticly();
 
-    if (this.laysDown === false) {
-      if (this.tree) {
-        translate(
-          this.x - this.tree.width / 20,
-          this.y - this.tree.height / 10
-        );
-
-        scale(0.11);
-
-        image(this.tree, 0, 0);
+    if (this.existing) {
+      if (this.laysDown === false) {
+        this.placeItem(this.x, this.y, 0.11, this.tree);
+      } else {
+        //placeItem(); nicht möglich, da this.stump.width viel zu hoch
+        push();
+        translate(this.x - 6, this.y - 5);
+        scale(0.03);
+        image(this.stump, 0, 0);
         pop();
       }
-    } else {
-      push();
-      translate(this.x - 6, this.y - 5);
-      scale(0.03);
-      image(this.stump, 0, 0);
-      // console.log("ab");
     }
-    pop();
   }
 }
