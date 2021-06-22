@@ -77,6 +77,17 @@ class Mainscreen {
       buttons.forEach((button) => {
         button.pressed = false;
       });
+
+      this.landscape();
+
+      trees.forEach((tree) => {
+        tree.display();
+      });
+
+      dayOneNature.display();
+
+      this.yearCounter();
+
       nextYearButton.newYear = false;
     }
   }
