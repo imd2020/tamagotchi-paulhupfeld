@@ -17,12 +17,8 @@ export default class Trash {
     this.x = random(-50, 640);
     this.y = random(300, 500);
 
-    r = Math.random();
-    if (r > 0.5) {
-      this.rotation = 1;
-    } else {
-      this.rotation = -1;
-    }
+    r = random(-2, 2);
+    this.rotation = r;
 
     // trage in array ein
   }

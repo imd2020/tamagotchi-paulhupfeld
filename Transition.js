@@ -1,22 +1,20 @@
-class Transition {
+export default class Transition {
   constructor() {
     this.transparency = 0;
     this.change = "gettingHigher";
   }
 
   controllTransparency() {
-    if (this.transparency >= 255) {
+    if (this.transparency >= 140) {
       this.change = "gettingLower";
     }
 
     if (this.change === "gettingHigher") {
-      this.transparency += 20;
+      this.transparency += 10;
     } else if (this.change === "gettingLower") {
-      this.transparency -= 20;
+      this.transparency -= 10;
     }
   }
-
-  stopTransition() {}
 
   display() {
     clear();
@@ -24,20 +22,11 @@ class Transition {
     rect(0, 0, 600, 600);
 
     fill(180, 255, 180, this.transparency * 3);
-
-    textAlign(LEFT, LEFT);
-
+    textAlign(CENTER, CENTER);
     textSize(50);
-
-    text("Sommer 2020", 250, 280, 100, 300);
+    text(mainscreen.year, 300, 310);
     // text("Sommer ) + mainscreen.year, 10, 20);
 
     this.controllTransparency();
   }
-}
-
-let transition = new Transition();
-
-function draw() {
-  transition.display();
 }

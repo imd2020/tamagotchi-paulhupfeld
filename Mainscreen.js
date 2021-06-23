@@ -5,6 +5,7 @@ import DayOneNature from "./DayOneNature.js";
 import Animal from "./Animal.js";
 import Trash from "./Trash.js";
 import Weed from "./Weed.js";
+import Transition from "./Transition.js";
 
 let nextYearButton = new NextYearButton(405, 520, "Nächstes Jahr");
 
@@ -16,6 +17,8 @@ let buttons = [
   new Button(225, 520, "Wild schießen"),
   nextYearButton,
 ];
+
+let transition = new Transition();
 
 class Mainscreen {
   constructor() {
@@ -224,6 +227,10 @@ function draw() {
 
     dayOneNature = new DayOneNature();
     start = false;
+  }
+
+  if (nextYearButton.nextYear) {
+    transition.display();
   }
 
   mainscreen.displayHotbar();
