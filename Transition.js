@@ -23,7 +23,7 @@ class Transition {
     fill(180, 255, 180, this.transparency);
     rect(0, 0, 600, 600);
 
-    fill(255, 255, 255, this.transparency);
+    fill(180, 255, 180, this.transparency * 3);
 
     textAlign(LEFT, LEFT);
 

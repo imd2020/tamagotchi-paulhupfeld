@@ -8,13 +8,14 @@ export default class Tree {
     this.y = -100;
     this.age = 0;
 
-    this.plant = false;
+    this.plant = true;
     this.kill = false;
 
     this.laysDown = false;
     this.tree = tree;
     this.stump = stump;
   }
+
   giveRandomParameters() {
     this.x = random(-50, 640);
     this.y = random(160, 360);
@@ -29,7 +30,7 @@ export default class Tree {
   plantTreesAutomaticly(r) {
     if (this.existing === false) {
       r = Math.random();
-      if ((this.plant && r < 0.4) || r < 0.1) {
+      if ((this.plant && r < 0.4) || r < 0.05) {
         this.giveRandomParameters();
         this.laysDown = false;
         this.existing = true;
@@ -45,7 +46,7 @@ export default class Tree {
 
   killTreesAutomaticly(r) {
     r = Math.random();
-    if ((this.kill && r < 0.5) || r < 0.5) {
+    if ((this.kill && r < 0.5) || r < 0.003 * this.age) {
       this.laysDown = true;
       this.age = 0;
     }
