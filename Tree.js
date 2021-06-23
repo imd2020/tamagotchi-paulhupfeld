@@ -32,10 +32,7 @@ export default class Tree {
       r = Math.random();
       if ((this.create && r < 0.4) || r < 0.05) {
         this.giveRandomParameters();
-
         this.laysDown = false;
-        this.age = 0;
-
         this.existing = true;
       }
     }
@@ -60,6 +57,7 @@ export default class Tree {
 
     if (this.laysDown && this.age === 3) {
       this.existing = false;
+      this.age = 0;
     }
   }
 

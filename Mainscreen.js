@@ -3,6 +3,7 @@ import NextYearButton from "./NextYearButton.js";
 import Tree from "./Tree.js";
 import DayOneNature from "./DayOneNature.js";
 import Animal from "./Animal.js";
+import Trash from "./Trash.js";
 
 let nextYearButton = new NextYearButton(405, 520, "Nächstes Jahr");
 
@@ -52,6 +53,13 @@ class Mainscreen {
         });
       }
 
+      //Müll aufsammeln
+      if (button.message === "Müll aufsammeln" && button.pressed) {
+        trash.forEach((oneTrash) => {
+          oneTrash.killItem();
+        });
+      }
+
       //Bäume roden
       if (button.message === "Bäume roden" && button.pressed) {
         trees.forEach((tree) => {
@@ -84,6 +92,10 @@ class Mainscreen {
         tree.display();
       });
 
+      trash.forEach((oneTrash) => {
+        oneTrash.display();
+      });
+
       animals.forEach((animal) => {
         animal.display();
       });
@@ -110,6 +122,7 @@ function mousePressed() {
 let start = true;
 
 let trees;
+let trash;
 let animals;
 let dayOneNature;
 
@@ -140,6 +153,8 @@ function draw() {
       new Tree(),
       new Tree(),
     ];
+
+    trash = [new Trash(), new Trash()];
     animals = [new Animal(), new Animal()];
 
     dayOneNature = new DayOneNature();

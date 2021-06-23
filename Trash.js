@@ -1,21 +1,18 @@
-import { animal } from "./HTML/p5setup.js";
+import { trash } from "./HTML/p5setup.js";
 
-export default class Animal {
+export default class Trash {
   constructor() {
     this.existing = false;
 
     this.x = -100;
     this.y = -100;
 
-    this.age = 0;
-    this.kill = false;
-
-    this.animal = animal;
+    this.trash = trash;
   }
 
   giveRandomParameters() {
     this.x = random(-50, 640);
-    this.y = random(160, 400);
+    this.y = random(300, 500);
 
     // trage in array ein
   }
@@ -23,10 +20,8 @@ export default class Animal {
   createAutomaticly(r) {
     if (this.existing === false) {
       r = Math.random();
-      if (r < 0.15) {
+      if (r < 0.1) {
         this.giveRandomParameters();
-
-        this.age = 0;
 
         this.existing = true;
       }
@@ -34,20 +29,8 @@ export default class Animal {
   }
 
   killItem(r) {
-    this.kill = true;
-  }
-
-  killAutomaticly(r) {
-    r = Math.random();
-    if (this.kill || r < 0.003 * this.age) {
-      this.existing = false;
-      this.age = 0;
-    }
-    this.kill = false;
-  }
-
-  getOlder() {
-    this.age++;
+    this.existing = false;
+    console.log("kill");
   }
 
   placeItem(x, y, s, i) {
@@ -60,15 +43,11 @@ export default class Animal {
   }
 
   display() {
-    this.getOlder();
-
-    this.killAutomaticly();
     this.createAutomaticly();
 
     if (this.existing) {
-      this.giveRandomParameters();
-
-      this.placeItem(this.x, this.y, 0.05, this.animal);
+      this.placeItem(this.x, this.y, 0.05, this.trash);
+      console.log("trash");
     }
   }
 }
