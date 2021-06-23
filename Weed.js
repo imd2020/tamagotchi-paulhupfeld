@@ -1,6 +1,6 @@
-import { tree1, tree2, tree3, stump } from "./HTML/p5setup.js";
+import { weed1, weed2, weed3, weed4, weed5 } from "./HTML/p5setup.js";
 
-export default class Tree {
+export default class Weed {
   constructor() {
     this.existing = false;
 
@@ -8,38 +8,36 @@ export default class Tree {
     this.y = -100;
 
     this.age = 0;
-    this.create = true;
     this.kill = false;
-    this.laysDown = false;
 
-    this.tree = tree1;
-    this.tree1 = tree1;
-    this.tree2 = tree2;
-    this.tree3 = tree3;
-
-    this.stump = stump;
+    this.weed = weed1;
+    this.weed1 = weed1;
+    this.weed2 = weed2;
+    this.weed3 = weed3;
+    this.weed4 = weed4;
+    this.weed5 = weed5;
   }
 
   //added randomImage
   giveRandomParameters(r) {
     //random Coordinates
     this.x = random(-50, 640);
-    this.y = random(160, 360);
+    this.y = random(220, 600);
     // trage in array ein
 
     //random Image
     r = Math.random();
-    if (r < 0.5) {
-      this.tree = tree1;
+    if (r < 0.2) {
+      this.weed = weed2;
+    } else if (r < 0.4) {
+      this.weed = weed2;
+    } else if (r < 0.6) {
+      this.weed = weed3;
     } else if (r < 0.8) {
-      this.tree = tree2;
+      this.weed = weed4;
     } else {
-      this.tree = tree3;
+      this.weed = weed5;
     }
-  }
-
-  createItem() {
-    this.create = true;
   }
 
   createAutomaticly(r) {
@@ -60,7 +58,7 @@ export default class Tree {
 
   killAutomaticly(r) {
     r = Math.random();
-    if ((this.kill && r < 0.5) || r < 0.003 * this.age) {
+    if ((this.kill && r < 0.9) || r < 0.003 * this.age) {
       this.laysDown = true;
       this.age = 0;
     }
@@ -69,11 +67,6 @@ export default class Tree {
 
   getOlder() {
     this.age++;
-
-    if (this.laysDown && this.age === 3) {
-      this.existing = false;
-      this.age = 0;
-    }
   }
 
   placeItem(x, y, s, i) {
@@ -85,22 +78,11 @@ export default class Tree {
   }
 
   display() {
-    this.getOlder();
-
     this.killAutomaticly();
     this.createAutomaticly();
 
     if (this.existing) {
-      if (this.laysDown === false) {
-        this.placeItem(this.x, this.y, 0.11, this.tree);
-      } else {
-        //placeItem(); nicht möglich, da this.stump.width viel zu hoch
-        push();
-        translate(this.x - 6, this.y - 5);
-        scale(0.03);
-        image(this.stump, 0, 0);
-        pop();
-      }
+      this.placeItem(this.x, this.y, 0.07, this.weed);
     }
   }
 }

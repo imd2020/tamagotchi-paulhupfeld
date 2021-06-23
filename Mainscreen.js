@@ -4,15 +4,16 @@ import Tree from "./Tree.js";
 import DayOneNature from "./DayOneNature.js";
 import Animal from "./Animal.js";
 import Trash from "./Trash.js";
+import Weed from "./Weed.js";
 
 let nextYearButton = new NextYearButton(405, 520, "Nächstes Jahr");
 
 let buttons = [
   new Button(45, 465, "Bäume pflanzen"),
   new Button(225, 465, "Müll aufsammeln"),
-  new Button(405, 465, "Rasen mähen"),
+  new Button(405, 465, "Heu holen"),
   new Button(45, 520, "Bäume roden"),
-  new Button(225, 520, "Jäger holen"),
+  new Button(225, 520, "Wild schießen"),
   nextYearButton,
 ];
 
@@ -60,6 +61,13 @@ class Mainscreen {
         });
       }
 
+      //Heu holen
+      if (button.message === "Heu holen" && button.pressed) {
+        weed.forEach((oneWeed) => {
+          oneWeed.killItem();
+        });
+      }
+
       //Bäume roden
       if (button.message === "Bäume roden" && button.pressed) {
         trees.forEach((tree) => {
@@ -68,7 +76,7 @@ class Mainscreen {
       }
 
       //Jäger holen
-      if (button.message === "Jäger holen" && button.pressed) {
+      if (button.message === "Wild schießen" && button.pressed) {
         animals.forEach((animal) => {
           animal.killItem();
         });
@@ -100,6 +108,10 @@ class Mainscreen {
         animal.display();
       });
 
+      weed.forEach((oneWeed) => {
+        oneWeed.display();
+      });
+
       dayOneNature.display();
 
       this.displayYearCounter();
@@ -124,6 +136,8 @@ let start = true;
 let trees;
 let trash;
 let animals;
+let weed;
+
 let dayOneNature;
 
 function draw() {
@@ -154,8 +168,59 @@ function draw() {
       new Tree(),
     ];
 
-    trash = [new Trash(), new Trash()];
+    trash = [
+      new Trash(),
+      new Trash(),
+      new Trash(),
+      new Trash(),
+      new Trash(),
+      new Trash(),
+    ];
+
     animals = [new Animal(), new Animal()];
+
+    weed = [
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+    ];
 
     dayOneNature = new DayOneNature();
     start = false;

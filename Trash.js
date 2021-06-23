@@ -7,12 +7,22 @@ export default class Trash {
     this.x = -100;
     this.y = -100;
 
+    this.rotation = 0;
+
     this.trash = trash;
   }
 
-  giveRandomParameters() {
+  //rotation added
+  giveRandomParameters(r) {
     this.x = random(-50, 640);
     this.y = random(300, 500);
+
+    r = Math.random();
+    if (r > 0.5) {
+      this.rotation = 1;
+    } else {
+      this.rotation = -1;
+    }
 
     // trage in array ein
   }
@@ -38,6 +48,8 @@ export default class Trash {
     // translate(x - i.width / 20, y - i.height / 10);
     translate(x, y);
     scale(s);
+    rotate(this.rotation);
+
     image(i, 0, 0);
     pop();
   }
@@ -46,7 +58,7 @@ export default class Trash {
     this.createAutomaticly();
 
     if (this.existing) {
-      this.placeItem(this.x, this.y, 0.05, this.trash);
+      this.placeItem(this.x, this.y, 0.04, this.trash);
       console.log("trash");
     }
   }
