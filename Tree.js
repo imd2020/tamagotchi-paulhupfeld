@@ -6,12 +6,12 @@ export default class Tree {
 
     this.x = -100;
     this.y = -100;
+
     this.age = 0;
-
-    this.plant = true;
+    this.create = true;
     this.kill = false;
-
     this.laysDown = false;
+
     this.tree = tree;
     this.stump = stump;
   }
@@ -23,28 +23,30 @@ export default class Tree {
     // trage in array ein
   }
 
-  plantTrees() {
-    this.plant = true;
+  createItem() {
+    this.create = true;
   }
 
-  plantTreesAutomaticly(r) {
+  createAutomaticly(r) {
     if (this.existing === false) {
       r = Math.random();
-      if ((this.plant && r < 0.4) || r < 0.05) {
+      if ((this.create && r < 0.4) || r < 0.05) {
         this.giveRandomParameters();
+
         this.laysDown = false;
+        this.age = 0;
+
         this.existing = true;
-        this.plant = false;
       }
     }
-    this.plant = false;
+    this.create = false;
   }
 
-  killTrees(r) {
+  killItem(r) {
     this.kill = true;
   }
 
-  killTreesAutomaticly(r) {
+  killAutomaticly(r) {
     r = Math.random();
     if ((this.kill && r < 0.5) || r < 0.003 * this.age) {
       this.laysDown = true;
@@ -72,8 +74,8 @@ export default class Tree {
   display() {
     this.getOlder();
 
-    this.killTreesAutomaticly();
-    this.plantTreesAutomaticly();
+    this.killAutomaticly();
+    this.createAutomaticly();
 
     if (this.existing) {
       if (this.laysDown === false) {
