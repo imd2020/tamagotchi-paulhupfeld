@@ -24,7 +24,7 @@ export default class Tree {
   giveRandomParameters(r) {
     //random Coordinates
     this.x = random(-50, 640);
-    this.y = random(160, 360);
+    this.y = random(200, 360);
     // trage in array ein
 
     //random Image

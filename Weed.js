@@ -58,9 +58,10 @@ export default class Weed {
 
   killAutomaticly(r) {
     r = Math.random();
-    if ((this.kill && r < 0.9) || r < 0.003 * this.age) {
-      this.laysDown = true;
+    if (this.kill || r < 0.003 * this.age) {
       this.age = 0;
+      this.existing = false;
+      console.log("kill");
     }
     this.kill = false;
   }

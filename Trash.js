@@ -40,7 +40,6 @@ export default class Trash {
 
   killItem(r) {
     this.existing = false;
-    console.log("kill");
   }
 
   placeItem(x, y, s, i) {
@@ -59,7 +58,6 @@ export default class Trash {
 
     if (this.existing) {
       this.placeItem(this.x, this.y, 0.04, this.trash);
-      console.log("trash");
     }
   }
 }
