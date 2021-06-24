@@ -229,9 +229,9 @@ function draw() {
     start = false;
   }
 
-  if (nextYearButton.nextYear) {
-    transition.display();
-  }
+  // if (nextYearButton.nextYear) {
+  //   transition.display();
+  // }
 
   mainscreen.displayHotbar();
   mainscreen.refreshScreen();

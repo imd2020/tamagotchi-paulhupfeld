@@ -61,7 +61,6 @@ export default class Weed {
     if (this.kill || r < 0.003 * this.age) {
       this.age = 0;
       this.existing = false;
-      console.log("kill");
     }
     this.kill = false;
   }

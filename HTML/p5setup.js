@@ -25,12 +25,12 @@ let log;
 let deko;
 let stone1;
 let stone2;
+let sun;
 
 function preload() {
   tree1 = loadImage("./images/tree1.png");
   tree2 = loadImage("./images/tree2.png");
   tree3 = loadImage("./images/tree3.png");
-
   animal = loadImage("./images/animal.png");
   trash = loadImage("./images/trash.png");
   weed1 = loadImage("./images/weed1.png");
@@ -43,6 +43,7 @@ function preload() {
   deko = loadImage("./images/deko.png");
   stone1 = loadImage("./images/stone1.png");
   stone2 = loadImage("./images/stone2.png");
+  sun = loadImage("./images/sun.png");
 }
 
 export {
@@ -61,6 +62,7 @@ export {
   deko,
   stone1,
   stone2,
+  sun,
 };
 
 window.preload = preload;

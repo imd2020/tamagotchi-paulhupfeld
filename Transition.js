@@ -21,10 +21,10 @@ export default class Transition {
     fill(180, 255, 180, this.transparency);
     rect(0, 0, 600, 600);
 
-    fill(180, 255, 180, this.transparency * 3);
-    textAlign(CENTER, CENTER);
-    textSize(50);
-    text(mainscreen.year, 300, 310);
+    // fill(180, 255, 180, this.transparency * 3);
+    // textAlign(CENTER, CENTER);
+    // textSize(50);
+    // text(mainscreen.year, 300, 310);
     // text("Sommer ) + mainscreen.year, 10, 20);
 
     this.controllTransparency();
