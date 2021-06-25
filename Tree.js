@@ -1,5 +1,7 @@
 import { tree1, tree2, tree3, stump } from "./HTML/p5setup.js";
 
+let takenSpace = [];
+
 export default class Tree {
   constructor() {
     this.existing = false;
@@ -20,12 +22,29 @@ export default class Tree {
     this.stump = stump;
   }
 
-  //added randomImage
   giveRandomParameters(r) {
     //random Coordinates
     this.x = random(-50, 640);
-    this.y = random(200, 360);
-    // trage in array ein
+    this.y = random(180, 360);
+
+    // if (freies Feld?){
+    // takenSpace.push([x, y, Weight, Hight]);
+    // }
+    // else {
+    // giveRandomParameters();
+    // }
+
+    //isSpaceFree{
+    // for every part of array -> (let i; i++; i < array.length) {} -> takenSpace[i];
+    // if (this.x + Weight < x || this.x > x + Weight || this.y + Height < y || this.y > y + Hight ){
+    //   return true;
+    // } else{
+    //   retun false;
+    // }
+
+    // }
+
+    //Achtung: vlt ist nicht mehr genug PLatz für alle Items
 
     //random Image
     r = Math.random();
