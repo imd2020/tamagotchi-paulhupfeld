@@ -72,7 +72,11 @@ export default class Weed {
   placeItem(x, y, s, i) {
     push();
     translate(x - i.width / 20, y - i.height / 10);
+<<<<<<< HEAD
     scale(s + this.y / 7000);
+=======
+    scale(s);
+>>>>>>> parent of e269ad9 (y sorted)
     image(i, 0, 0);
     pop();
   }
@@ -82,7 +86,11 @@ export default class Weed {
     this.createAutomaticly();
 
     if (this.existing) {
+<<<<<<< HEAD
       this.placeItem(this.x, this.y, 0.02, this.weed);
+=======
+      this.placeItem(this.x, this.y, 0.07, this.weed);
+>>>>>>> parent of e269ad9 (y sorted)
     }
   }
 }

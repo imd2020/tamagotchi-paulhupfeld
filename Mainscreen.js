@@ -5,10 +5,10 @@ import DayOneNature from "./DayOneNature.js";
 import Animal from "./Animal.js";
 import Trash from "./Trash.js";
 import Weed from "./Weed.js";
+import Transition from "./Transition.js";
 import YearCounter from "./YearCounter.js";
 
 let nextYearButton = new NextYearButton(405, 520, "Nächstes Jahr");
-let yearCounter = new YearCounter();
 
 let buttons = [
   new Button(45, 465, "Bäume pflanzen"),
@@ -19,7 +19,13 @@ let buttons = [
   nextYearButton,
 ];
 
-export default class Mainscreen {
+let transition = new Transition();
+let yearCounter = new YearCounter();
+
+class Mainscreen {
+  constructor() {
+    this.year = 2021;
+  }
   constructor() {}
 
   displayBackground() {
@@ -27,6 +33,13 @@ export default class Mainscreen {
     fill(237, 190, 130);
     noStroke();
     ellipse(300, 5000, 9700);
+  }
+
+  displayYearCounter() {
+    fill(0);
+    textAlign(LEFT);
+    textSize(18);
+    text("Aktuelles Jahr: " + mainscreen.year, 10, 20);
   }
 
   displayHotbar() {
@@ -83,162 +96,168 @@ export default class Mainscreen {
 
   refreshScreen() {
     if (nextYearButton.newYear) {
+      this.year++;
       yearCounter.year++;
 
       this.readButtons();
 
       this.displayBackground();
 
+      trees.forEach((tree) => {
+        tree.display();
+      });
+
+      trash.forEach((oneTrash) => {
+        oneTrash.display();
+      });
       concat1 = concat(animals, weed);
       concat2 = concat(trees, trash);
-      concat3 = concat(concat2, dayOneNature);
       allItems = concat(concat1, concat2);
 
+      animals.forEach((animal) => {
+        animal.display();
       // sort by value
       allItems.sort(function (a, b) {
         return a.y - b.y;
       });
 
+      weed.forEach((oneWeed) => {
+        oneWeed.display();
       allItems.forEach((item) => {
         item.display();
       });
 
+      dayOneNature.display();
+
+      this.displayYearCounter();
       yearCounter.display();
 
       // yearCounter.animateYear();
 
       nextYearButton.newYear = false;
     }
-  }
+      }
 }
 
-// let mainscreen = new Mainscreen();
+let mainscreen = new Mainscreen();
 
-// function mousePressed() {
-//   buttons.forEach((button) => {
-//     if (button.hitTest()) {
-//       button.pressed = !button.pressed;
-//     }
-//   });
-// }
+function mousePressed() {
+  buttons.forEach((button) => {
+    if (button.hitTest()) {
+      button.pressed = !button.pressed;
+    }
+  });
+}
 
 let start = true;
 
+let trees;
 let concat1 = [];
 let concat2 = [];
-let concat3 = [];
 let allItems = [];
 let trees = [];
-let trash = [];
-let animals = [];
-let weed = [];
-let dayOneNature = [];
+let trash;
+let animals;
+let weed;
 
-// function draw() {
-//   if (start) {
-//     //   for (let i; i++; i <= 20) {
-//     //     trees.push(new Tree());
-//     //   }
-//     trees = [
-//       new Tree(),
-//       new Tree(),
-//       new Tree(),
-//       new Tree(),
-//       new Tree(),
-//       new Tree(),
-//       new Tree(),
-//       new Tree(),
-//       new Tree(),
-//       new Tree(),
-//       new Tree(),
-//       new Tree(),
-//       new Tree(),
-//       new Tree(),
-//       new Tree(),
-//       new Tree(),
-//       new Tree(),
-//       new Tree(),
-//       new Tree(),
-//       new Tree(),
-//     ];
+let dayOneNature;
 
-//     trash = [
-//       new Trash(),
-//       new Trash(),
-//       new Trash(),
-//       new Trash(),
-//       new Trash(),
-//       new Trash(),
-//       new Trash(),
-//       new Trash(),
-//       new Trash(),
-//       new Trash(),
-//       new Trash(),
-//       new Trash(),
-//     ];
+function draw() {
+  if (start) {
+    // for (let i; i++; i <= 20) {
+    //   trees.push(new Tree());
+    // }
+    //   for (let i; i++; i <= 20) {
+    //     trees.push(new Tree());
+    //   }
+    trees = [
+      new Tree(),
+      new Tree(),
+      new Tree(),
+      new Tree(),
+      new Tree(),
+      new Tree(),
+      new Tree(),
+      new Tree(),
+      new Tree(),
+      new Tree(),
+      new Tree(),
+      new Tree(),
+      new Tree(),
+      new Tree(),
+      new Tree(),
+      new Tree(),
+      new Tree(),
+      new Tree(),
+      new Tree(),
+      new Tree(),
+    ];
 
-//     animals = [new Animal(), new Animal()];
+    trash = [
+      new Trash(),
+      new Trash(),
+      new Trash(),
+      new Trash(),
+      new Trash(),
+      new Trash(),
+    ];
 
-//     weed = [
-//       new Weed(),
-//       new Weed(),
-//       new Weed(),
-//       new Weed(),
-//       new Weed(),
-//       new Weed(),
-//       new Weed(),
-//       new Weed(),
-//       new Weed(),
-//       new Weed(),
-//       new Weed(),
-//       new Weed(),
-//       new Weed(),
-//       new Weed(),
-//       new Weed(),
-//       new Weed(),
-//       new Weed(),
-//       new Weed(),
-//       new Weed(),
-//       new Weed(),
-//       new Weed(),
-//       new Weed(),
-//       new Weed(),
-//       new Weed(),
-//       new Weed(),
-//       new Weed(),
-//       new Weed(),
-//       new Weed(),
-//       new Weed(),
-//       new Weed(),
-//       new Weed(),
-//       new Weed(),
-//       new Weed(),
-//       new Weed(),
-//       new Weed(),
-//       new Weed(),
-//       new Weed(),
-//       new Weed(),
-//       new Weed(),
-//       new Weed(),
-//     ];
+    animals = [new Animal(), new Animal()];
 
-//     dayOneNature = [
-//       new DayOneNature(),
-//       new DayOneNature(),
-//       new DayOneNature(),
-//       new DayOneNature(),
-//       new DayOneNature(),
-//       new DayOneNature(),
-//       new DayOneNature(),
-//     ];
+    weed = [
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+      new Weed(),
+    ];
 
-//     dayOneNature = new DayOneNature();
-//     start = false;
-//   }
+    dayOneNature = new DayOneNature();
+    start = false;
+  }
 
-//   mainscreen.displayHotbar();
-//   mainscreen.refreshScreen();
-// }
+  // if (nextYearButton.nextYear) {
+  //   transition.display();
+  // }
 
-// window.draw = draw;
-// window.mousePressed = mousePressed;
+  mainscreen.displayHotbar();
+  mainscreen.refreshScreen();
+}
+
+window.draw = draw;
+window.mousePressed = mousePressed;

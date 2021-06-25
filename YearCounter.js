@@ -1,6 +1,6 @@
-// import gsap from "./gsap.min.js";
+import gsap from "./gsap.min.js";
 
-export default class YearCounter {
+class YearCounter {
   constructor() {
     this.x = 10;
     this.y = 10;
@@ -8,12 +8,10 @@ export default class YearCounter {
     this.b = 0;
     this.c = 0;
     this.scale = 1;
-
-    this.year = 2021;
   }
 
-  display() {
-    // background(160);
+  displayYearCounter() {
+    background(160);
 
     push();
     translate(this.x, this.y);
@@ -25,13 +23,13 @@ export default class YearCounter {
 
     textSize(18);
     textAlign(LEFT, TOP);
-    text(this.year, 0, 0);
+    text("2020", 0, 0);
 
     pop();
   }
 
   animateYear() {
-    gsap.to(this, {
+    gsap.to({
       duration: 0.2,
       ease: "yoyo",
       scale: 1.7,
@@ -40,7 +38,7 @@ export default class YearCounter {
       c: 80,
 
       onComplete: () => {
-        gsap.to(this, {
+        gsap.to({
           duration: 0.4,
           ease: "yoyo",
           scale: 1,

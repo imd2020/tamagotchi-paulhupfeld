@@ -1,7 +1,5 @@
 import { tree1, tree2, tree3, stump } from "./HTML/p5setup.js";
 
-let takenSpace = [];
-
 export default class Tree {
   constructor() {
     this.existing = false;
@@ -22,10 +20,16 @@ export default class Tree {
     this.stump = stump;
   }
 
+  //added randomImage
   giveRandomParameters(r) {
     //random Coordinates
     this.x = random(-50, 640);
+<<<<<<< HEAD
     this.y = random(180, 360);
+=======
+    this.y = random(200, 360);
+    // trage in array ein
+>>>>>>> parent of e269ad9 (y sorted)
 
     //random Image
     r = Math.random();

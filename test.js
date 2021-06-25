@@ -10,4 +10,6 @@ let imageHight = 40;
 
 array.push = [koordinateX, koordinateY, imageWeight, imageHight];
 
+for (let i; i++; i < array.length) {}
+
 console.log(array);
