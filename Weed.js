@@ -74,6 +74,7 @@ export default class Weed {
     translate(x - i.width / 20, y - i.height / 10);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     scale(s + this.y / 7000);
 =======
     scale(s);
@@ -81,6 +82,9 @@ export default class Weed {
 =======
     scale(s + this.y / 10000);
 >>>>>>> parent of e8cde04 (kinda wrong)
+=======
+    scale(s);
+>>>>>>> parent of e269ad9 (y sorted)
     image(i, 0, 0);
     pop();
   }
@@ -92,6 +96,7 @@ export default class Weed {
     if (this.existing) {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       this.placeItem(this.x, this.y, 0.02, this.weed);
 =======
       this.placeItem(this.x, this.y, 0.07, this.weed);
@@ -99,6 +104,9 @@ export default class Weed {
 =======
       this.placeItem(this.x, this.y, 0.03, this.weed);
 >>>>>>> parent of e8cde04 (kinda wrong)
+=======
+      this.placeItem(this.x, this.y, 0.07, this.weed);
+>>>>>>> parent of e269ad9 (y sorted)
     }
   }
 }

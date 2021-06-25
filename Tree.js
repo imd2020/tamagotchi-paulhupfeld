@@ -25,6 +25,7 @@ export default class Tree {
     //random Coordinates
     this.x = random(-50, 640);
 <<<<<<< HEAD
+<<<<<<< HEAD
     this.y = random(180, 360);
 =======
     this.y = random(200, 360);
@@ -49,6 +50,10 @@ export default class Tree {
     // }
 
     //Achtung: vlt ist nicht mehr genug PLatz für alle Items
+=======
+    this.y = random(200, 360);
+    // trage in array ein
+>>>>>>> parent of e269ad9 (y sorted)
 
     //random Image
     r = Math.random();
