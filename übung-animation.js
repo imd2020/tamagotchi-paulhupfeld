@@ -1,4 +1,4 @@
-import gsap from "./gsap.min.js";
+// import gsap from "./gsap.min.js";
 
 let year = {
   x: 10,
@@ -17,8 +17,6 @@ function displayYearCounter() {
   scale(year.scale);
 
   fill(year.a, year.b, year.c);
-  // ellipse(-3, -3.4, 4);
-  // ellipse(+25, -3.4, 4);
 
   textSize(18);
   textAlign(LEFT, TOP);

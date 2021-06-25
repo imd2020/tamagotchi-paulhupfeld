@@ -18,7 +18,6 @@ export default class Weed {
   }
 
   giveRandomParameters(r) {
-    //random Coordinates
     this.x = random(-50, 640);
     this.y = random(220, 600);
 

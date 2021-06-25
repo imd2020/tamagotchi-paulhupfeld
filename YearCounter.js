@@ -1,4 +1,4 @@
-import gsap from "./gsap.min.js";
+// import gsap from "./gsap.min.js";
 
 export default class YearCounter {
   constructor() {
@@ -11,15 +11,11 @@ export default class YearCounter {
   }
 
   display() {
-    background(160);
-
     push();
     translate(this.x, this.y);
     scale(this.scale);
 
     fill(this.a, this.b, this.c);
-    // ellipse(-3, -3.4, 4);
-    // ellipse(+25, -3.4, 4);
 
     textSize(18);
     textAlign(LEFT, TOP);
@@ -29,6 +25,7 @@ export default class YearCounter {
   }
 
   animate() {
+    console.log("h");
     gsap.to(this, {
       duration: 0.2,
       ease: "yoyo",
@@ -50,16 +47,3 @@ export default class YearCounter {
     });
   }
 }
-
-let yearCounter = new YearCounter();
-
-function draw() {
-  yearCounter.display();
-}
-
-function mouseClicked() {
-  yearCounter.animate();
-}
-
-window.draw = draw;
-window.mousePressed = mousePressed;

@@ -20,10 +20,7 @@ export default class Tree {
     this.stump = stump;
   }
 
-  //added randomImage
   giveRandomParameters(r) {
-    //random Coordinates
-
     this.x = random(-50, 640);
     this.y = random(200, 360);
 
@@ -94,11 +91,6 @@ export default class Tree {
       if (this.laysDown === false) {
         this.placeItem(this.x, this.y, 0.11, this.tree);
       } else {
-        //   push();
-        //   translate(this.x - 6, this.y - 5);
-        //   scale(0.03);
-        //   image(this.stump, 0, 0);
-        //   pop();
         this.placeItem(this.x, this.y, 0.03, this.stump);
       }
     }

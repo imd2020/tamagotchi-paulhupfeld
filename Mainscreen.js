@@ -22,7 +22,7 @@ let buttons = [
 
 class Mainscreen {
   constructor() {
-    this.year = 2021;
+    this.year = 2020;
 
     this.screen = "startscreen";
   }
@@ -34,13 +34,13 @@ class Mainscreen {
     ellipse(300, 5000, 9700);
   }
 
-  // displayYearCounter() {
-  //   fill(0);
-  //   textFont("Herculanum");
-  //   textAlign(LEFT);
-  //   textSize(22);
-  //   text(this.year, 5, 15);
-  // }
+  displayYearCounter() {
+    fill(0);
+    textFont("Herculanum");
+    textAlign(LEFT);
+    textSize(22);
+    text(this.year, 5, 15);
+  }
 
   displayHotbar() {
     fill(255, 239, 219);
@@ -120,7 +120,9 @@ class Mainscreen {
       });
 
       // yearCounter.display();
+      // yearCounter.animate();
 
+      this.displayYearCounter();
       nextYearButton.newYear = false;
     }
   }
@@ -172,6 +174,7 @@ function mousePressed() {
   if (startButton.hitTest()) {
     startButton.pressed = !startButton.pressed;
   }
+  // animateYear();
 }
 
 let start = true;
