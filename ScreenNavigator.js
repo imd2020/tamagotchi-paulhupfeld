@@ -11,13 +11,10 @@ class ScreenNavigator {
 
     //Button
     let button = new Button(225, 400, "Start");
+
     button.display();
 
-    if (
-      this.actualScreen === "startscreen" &&
-      mouseIsPressed &&
-      button.hitTest()
-    ) {
+    if (mouseIsPressed && startButton.hitTest()) {
       this.actualScreen = "mainscreen";
     }
   }
@@ -54,17 +51,11 @@ let screenNavigator = new ScreenNavigator();
 // }
 
 function mousePressed() {
-  // clear();
-
   buttons.forEach((button) => {
     if (button.hitTest()) {
       button.pressed = !button.pressed;
     }
   });
-
-  // trees.forEach((tree) => {
-  //   console.log("is " + tree.laysDown);
-  // });
 }
 
 function draw() {

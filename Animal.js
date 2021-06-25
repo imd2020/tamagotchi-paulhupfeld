@@ -15,9 +15,7 @@ export default class Animal {
 
   giveRandomParameters() {
     this.x = random(-50, 640);
-    this.y = random(160, 400);
-
-    // trage in array ein
+    this.y = random(160, 500);
   }
 
   createAutomaticly(r) {
@@ -52,7 +50,7 @@ export default class Animal {
 
   placeItem(x, y, s, i) {
     push();
-    translate(x, y);
+    translate(x - i.width / 20, y + i.height / 10);
     scale(s + this.y / 7000);
     image(i, 0, 0);
     pop();

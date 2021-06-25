@@ -19,13 +19,10 @@ let weed1;
 let weed2;
 let weed3;
 let weed4;
-let weed5;
 let stump;
-let log;
 let deko;
 let stone1;
 let stone2;
-let sun;
 
 function preload() {
   tree1 = loadImage("./images/tree1.png");
@@ -37,13 +34,10 @@ function preload() {
   weed2 = loadImage("./images/weed2.png");
   weed3 = loadImage("./images/weed3.png");
   weed4 = loadImage("./images/weed4.png");
-  weed5 = loadImage("./images/weed5.png");
   stump = loadImage("./images/stump.png");
-  log = loadImage("./images/log.png");
   deko = loadImage("./images/deko.png");
   stone1 = loadImage("./images/stone1.png");
   stone2 = loadImage("./images/stone2.png");
-  sun = loadImage("./images/sun.png");
 }
 
 export {
@@ -56,13 +50,10 @@ export {
   weed2,
   weed3,
   weed4,
-  weed5,
   stump,
-  log,
   deko,
   stone1,
   stone2,
-  sun,
 };
 
 window.preload = preload;

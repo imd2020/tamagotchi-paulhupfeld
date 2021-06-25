@@ -12,15 +12,12 @@ export default class Trash {
     this.trash = trash;
   }
 
-  //rotation added
   giveRandomParameters(r) {
     this.x = random(-50, 640);
-    this.y = random(300, 500);
+    this.y = random(350, 550);
 
     r = random(-2, 2);
     this.rotation = r;
-
-    // trage in array ein
   }
 
   createAutomaticly(r) {
@@ -40,9 +37,9 @@ export default class Trash {
 
   placeItem(x, y, s, i) {
     push();
-    // translate(x - i.width / 20, y - i.height / 10);
-    translate(x, y);
-    scale(s + this.y / 7000);
+    translate(x - i.width / 20, y - i.height / 10);
+    // translate(x, y);
+    scale(s + this.y / 8000);
     rotate(this.rotation);
 
     image(i, 0, 0);

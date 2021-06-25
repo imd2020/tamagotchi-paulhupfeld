@@ -15,6 +15,7 @@ export default class Button {
     noStroke();
     rect(this.x, this.y, 150, 40);
     fill(0);
+    textFont("Helvetica");
     textSize(18);
     textAlign(CENTER, CENTER);
     text(this.message, this.x + 75, this.y + 22);

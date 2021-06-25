@@ -5,9 +5,10 @@ import DayOneNature from "./DayOneNature.js";
 import Animal from "./Animal.js";
 import Trash from "./Trash.js";
 import Weed from "./Weed.js";
+import { animal } from "./HTML/p5setup.js";
 
+let startButton = new Button(225, 450, "Start");
 let nextYearButton = new NextYearButton(405, 520, "Nächstes Jahr");
-
 let buttons = [
   new Button(45, 465, "Bäume pflanzen"),
   new Button(225, 465, "Müll aufsammeln"),
@@ -20,6 +21,8 @@ let buttons = [
 class Mainscreen {
   constructor() {
     this.year = 2021;
+
+    this.screen = "startscreen";
   }
 
   displayBackground() {
@@ -31,9 +34,10 @@ class Mainscreen {
 
   displayYearCounter() {
     fill(0);
+    textFont("Herculanum");
     textAlign(LEFT);
-    textSize(18);
-    text("Aktuelles Jahr: " + mainscreen.year, 10, 20);
+    textSize(22);
+    text(this.year, 5, 15);
   }
 
   displayHotbar() {
@@ -96,9 +100,12 @@ class Mainscreen {
 
       this.displayBackground();
 
-      console.log(trash);
+      trash.forEach((oneTrash) => {
+        oneTrash.display();
+      });
+
       concat1 = concat(animals, weed);
-      concat2 = concat(trees, trash);
+      concat2 = concat(dayOneNature, trees);
       allItems = concat(concat1, concat2);
 
       // sort by value
@@ -110,11 +117,43 @@ class Mainscreen {
         item.display();
       });
 
-      dayOneNature.display();
-
       this.displayYearCounter();
 
       nextYearButton.newYear = false;
+    }
+  }
+
+  startscreen() {
+    background(255, 239, 219);
+
+    push();
+    translate(300, 270);
+    scale(0.12);
+    imageMode(CENTER);
+    image(animal, 0, 0);
+    pop();
+
+    textFont("Herculanum");
+    textAlign(CENTER);
+    textSize(80);
+    text("WOODMAN", 300, 100);
+
+    textSize(15);
+    text("Du bist Förster: lasse die Natur sprießen und gedeihen!", 300, 515);
+
+    textFont("Helvetica");
+    textSize(10);
+    text(
+      "Deer vector created by macrovector on pnghunter.com – Plant vectors created by macrovector on freepik.com",
+      300,
+      570
+    );
+
+    //Button
+    startButton.display();
+
+    if (mouseIsPressed && startButton.hitTest()) {
+      this.screen = "mainscreen";
     }
   }
 }
@@ -127,6 +166,10 @@ function mousePressed() {
       button.pressed = !button.pressed;
     }
   });
+
+  if (startButton.hitTest()) {
+    startButton.pressed = !startButton.pressed;
+  }
 }
 
 let start = true;
@@ -135,11 +178,10 @@ let trees = [];
 let trash = [];
 let animals = [];
 let weed = [];
+let dayOneNature = [];
 let concat1 = [];
 let concat2 = [];
 let allItems = [];
-
-let dayOneNature;
 
 function draw() {
   if (start) {
@@ -223,12 +265,22 @@ function draw() {
       new Weed(),
     ];
 
-    dayOneNature = new DayOneNature();
+    dayOneNature = [
+      new DayOneNature(),
+      new DayOneNature(),
+      new DayOneNature(),
+      new DayOneNature(),
+      new DayOneNature(),
+    ];
     start = false;
   }
 
-  mainscreen.displayHotbar();
-  mainscreen.refreshScreen();
+  if (mainscreen.screen === "startscreen") {
+    mainscreen.startscreen();
+  } else {
+    mainscreen.displayHotbar();
+    mainscreen.refreshScreen();
+  }
 }
 
 window.draw = draw;

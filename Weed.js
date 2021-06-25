@@ -1,4 +1,4 @@
-import { weed1, weed2, weed3, weed4, weed5 } from "./HTML/p5setup.js";
+import { weed1, weed2, weed3, weed4 } from "./HTML/p5setup.js";
 
 export default class Weed {
   constructor() {
@@ -15,15 +15,12 @@ export default class Weed {
     this.weed2 = weed2;
     this.weed3 = weed3;
     this.weed4 = weed4;
-    this.weed5 = weed5;
   }
 
-  //added randomImage
   giveRandomParameters(r) {
     //random Coordinates
     this.x = random(-50, 640);
     this.y = random(220, 600);
-    // trage in array ein
 
     //random Image
     r = Math.random();
@@ -69,8 +66,7 @@ export default class Weed {
 
   placeItem(x, y, s, i) {
     push();
-    // translate(x - i.width / 20, y - i.height / 10);
-    translate(x, y);
+    translate(x - i.width / 20, y - i.height / 10);
 
     scale(s + this.y / 7000);
 
