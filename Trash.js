@@ -37,8 +37,8 @@ export default class Trash {
 
   placeItem(x, y, s, i) {
     push();
-    translate(x - i.width / 20, y - i.height / 10);
-    // translate(x, y);
+
+    translate(x - (i.width * s) / 2, y - i.height * s);
     scale(s + this.y / 8000);
     rotate(this.rotation);
 

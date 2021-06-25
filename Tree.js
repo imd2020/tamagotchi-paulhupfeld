@@ -78,7 +78,7 @@ export default class Tree {
 
   placeItem(x, y, s, i) {
     push();
-    translate(x - i.width / 20, y - i.height / 10);
+    translate(x - (i.width * s) / 2, y - i.height * s);
     scale(s);
     image(i, 0, 0);
     pop();
@@ -94,11 +94,12 @@ export default class Tree {
       if (this.laysDown === false) {
         this.placeItem(this.x, this.y, 0.11, this.tree);
       } else {
-        push();
-        translate(this.x - 6, this.y - 5);
-        scale(0.03);
-        image(this.stump, 0, 0);
-        pop();
+        //   push();
+        //   translate(this.x - 6, this.y - 5);
+        //   scale(0.03);
+        //   image(this.stump, 0, 0);
+        //   pop();
+        this.placeItem(this.x, this.y, 0.03, this.stump);
       }
     }
   }

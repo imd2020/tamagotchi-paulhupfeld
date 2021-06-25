@@ -5,8 +5,10 @@ import DayOneNature from "./DayOneNature.js";
 import Animal from "./Animal.js";
 import Trash from "./Trash.js";
 import Weed from "./Weed.js";
+// import YearCounter from "./YearCounter.js";
 import { animal } from "./HTML/p5setup.js";
 
+// let yearCounter = new YearCounter();
 let startButton = new Button(225, 450, "Start");
 let nextYearButton = new NextYearButton(405, 520, "Nächstes Jahr");
 let buttons = [
@@ -32,13 +34,13 @@ class Mainscreen {
     ellipse(300, 5000, 9700);
   }
 
-  displayYearCounter() {
-    fill(0);
-    textFont("Herculanum");
-    textAlign(LEFT);
-    textSize(22);
-    text(this.year, 5, 15);
-  }
+  // displayYearCounter() {
+  //   fill(0);
+  //   textFont("Herculanum");
+  //   textAlign(LEFT);
+  //   textSize(22);
+  //   text(this.year, 5, 15);
+  // }
 
   displayHotbar() {
     fill(255, 239, 219);
@@ -117,7 +119,7 @@ class Mainscreen {
         item.display();
       });
 
-      this.displayYearCounter();
+      // yearCounter.display();
 
       nextYearButton.newYear = false;
     }
@@ -127,7 +129,7 @@ class Mainscreen {
     background(255, 239, 219);
 
     push();
-    translate(300, 270);
+    translate(300, 280);
     scale(0.12);
     imageMode(CENTER);
     image(animal, 0, 0);
@@ -139,7 +141,7 @@ class Mainscreen {
     text("WOODMAN", 300, 100);
 
     textSize(15);
-    text("Du bist Förster: lasse die Natur sprießen und gedeihen!", 300, 515);
+    text("Du bist Förster: lasse die Natur sprießen und gedeihen!", 300, 530);
 
     textFont("Helvetica");
     textSize(10);
