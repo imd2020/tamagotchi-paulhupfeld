@@ -19,14 +19,12 @@ export default class Trash {
 
     r = random(-2, 2);
     this.rotation = r;
-
-    // trage in array ein
   }
 
   createAutomaticly(r) {
     if (this.existing === false) {
       r = Math.random();
-      if (r < 0.1) {
+      if (r < 0.03) {
         this.giveRandomParameters();
 
         this.existing = true;
@@ -42,7 +40,7 @@ export default class Trash {
     push();
     // translate(x - i.width / 20, y - i.height / 10);
     translate(x, y);
-    scale(s);
+    scale(s + this.y / 7000);
     rotate(this.rotation);
 
     image(i, 0, 0);
@@ -53,7 +51,7 @@ export default class Trash {
     this.createAutomaticly();
 
     if (this.existing) {
-      this.placeItem(this.x, this.y, 0.04, this.trash);
+      this.placeItem(this.x, this.y, 0, this.trash);
     }
   }
 }

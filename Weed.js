@@ -72,7 +72,7 @@ export default class Weed {
   placeItem(x, y, s, i) {
     push();
     translate(x - i.width / 20, y - i.height / 10);
-    scale(s + this.y / 10000);
+    scale(s + this.y / 7000);
     image(i, 0, 0);
     pop();
   }
@@ -82,7 +82,7 @@ export default class Weed {
     this.createAutomaticly();
 
     if (this.existing) {
-      this.placeItem(this.x, this.y, 0.03, this.weed);
+      this.placeItem(this.x, this.y, 0.02, this.weed);
     }
   }
 }

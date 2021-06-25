@@ -27,25 +27,6 @@ export default class Tree {
     this.x = random(-50, 640);
     this.y = random(180, 360);
 
-    // if (freies Feld?){
-    // takenSpace.push([x, y, Weight, Hight]);
-    // }
-    // else {
-    // giveRandomParameters();
-    // }
-
-    //isSpaceFree{
-    // for every part of array -> (let i; i++; i < array.length) {} -> takenSpace[i];
-    // if (this.x + Weight < x || this.x > x + Weight || this.y + Height < y || this.y > y + Hight ){
-    //   return true;
-    // } else{
-    //   retun false;
-    // }
-
-    // }
-
-    //Achtung: vlt ist nicht mehr genug PLatz für alle Items
-
     //random Image
     r = Math.random();
     if (r < 0.5) {

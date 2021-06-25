@@ -2,41 +2,61 @@ import { deko, stone1, stone2, sun } from "./HTML/p5setup.js";
 
 export default class DayOneNature {
   constructor() {
+    this.existing = false;
+
+    this.x = -100;
+    this.y = -100;
+
+    this.image = image;
+
     this.deko = deko;
     this.stone1 = stone1;
     this.stone2 = stone2;
     this.sun = sun;
   }
 
-  placeItem(x, y, s, r, i) {
+  giveRandomParameters(r) {
+    this.x = random(-50, 640);
+    this.y = random(300, 500);
+
+    //random image
+    r = Math.random();
+    if (r < 0.25) {
+      this.image = this.deko;
+    } else if (r < 0.5) {
+      this.image = this.stone1;
+    } else if (r < 0.75) {
+      this.image = this.stone2;
+    } else {
+      this.image = this.sun;
+    }
+  }
+
+  createAutomaticly() {
+    if (this.existing === false) {
+      this.giveRandomParameters();
+      this.existing = true;
+    }
+  }
+
+  placeItem(x, y, s, r) {
     push();
 
-    translate(x - i.width / 20, y - i.height / 10);
+    translate(x - this.image.width / 20, y - this.image.height / 10);
     rotate(r);
     scale(s);
 
-    image(i, 0, 0);
+    image(this.image, 0, 0);
     pop();
   }
 
-  neverDyingItems() {
-    this.placeItem(540, 400, 0.15, 0, this.deko);
-    this.placeItem(150, 420, 0.06, 0, this.stone1);
-    this.placeItem(20, 540, 0.08, 0, this.stone1);
-    this.placeItem(375, 485, 0.07, 0, this.stone1);
-    this.placeItem(400, 390, 0.08, 0, this.stone2);
-    this.placeItem(500, 610, 0.1, 0, this.stone2);
-    this.placeItem(500, 320, 0.35, -1.7, this.sun);
-  }
-
   display() {
-    this.neverDyingItems();
+    this.createAutomaticly();
+
+    if (this.existing) {
+      // console.log("display");
+
+      this.placeItem(this.x, this.y, 0, this.image);
+    }
   }
-}
-
-let dayOneNature = new DayOneNature();
-
-function draw() {
-  dayOneNature.display();
-  // console.log("hi");
 }

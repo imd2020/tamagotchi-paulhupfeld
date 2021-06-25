@@ -8,6 +8,7 @@ import Weed from "./Weed.js";
 import YearCounter from "./YearCounter.js";
 
 let nextYearButton = new NextYearButton(405, 520, "Nächstes Jahr");
+let yearCounter = new YearCounter();
 
 let buttons = [
   new Button(45, 465, "Bäume pflanzen"),
@@ -18,9 +19,7 @@ let buttons = [
   nextYearButton,
 ];
 
-let yearCounter = new YearCounter();
-
-class Mainscreen {
+export default class Mainscreen {
   constructor() {}
 
   displayBackground() {
@@ -92,6 +91,7 @@ class Mainscreen {
 
       concat1 = concat(animals, weed);
       concat2 = concat(trees, trash);
+      concat3 = concat(concat2, dayOneNature);
       allItems = concat(concat1, concat2);
 
       // sort by value
@@ -103,8 +103,6 @@ class Mainscreen {
         item.display();
       });
 
-      dayOneNature.display();
-
       yearCounter.display();
 
       // yearCounter.animateYear();
@@ -114,117 +112,133 @@ class Mainscreen {
   }
 }
 
-let mainscreen = new Mainscreen();
+// let mainscreen = new Mainscreen();
 
-function mousePressed() {
-  buttons.forEach((button) => {
-    if (button.hitTest()) {
-      button.pressed = !button.pressed;
-    }
-  });
-}
+// function mousePressed() {
+//   buttons.forEach((button) => {
+//     if (button.hitTest()) {
+//       button.pressed = !button.pressed;
+//     }
+//   });
+// }
 
 let start = true;
 
 let concat1 = [];
 let concat2 = [];
+let concat3 = [];
 let allItems = [];
 let trees = [];
-let trash;
-let animals;
-let weed;
+let trash = [];
+let animals = [];
+let weed = [];
+let dayOneNature = [];
 
-let dayOneNature;
+// function draw() {
+//   if (start) {
+//     //   for (let i; i++; i <= 20) {
+//     //     trees.push(new Tree());
+//     //   }
+//     trees = [
+//       new Tree(),
+//       new Tree(),
+//       new Tree(),
+//       new Tree(),
+//       new Tree(),
+//       new Tree(),
+//       new Tree(),
+//       new Tree(),
+//       new Tree(),
+//       new Tree(),
+//       new Tree(),
+//       new Tree(),
+//       new Tree(),
+//       new Tree(),
+//       new Tree(),
+//       new Tree(),
+//       new Tree(),
+//       new Tree(),
+//       new Tree(),
+//       new Tree(),
+//     ];
 
-function draw() {
-  if (start) {
-    //   for (let i; i++; i <= 20) {
-    //     trees.push(new Tree());
-    //   }
-    trees = [
-      new Tree(),
-      new Tree(),
-      new Tree(),
-      new Tree(),
-      new Tree(),
-      new Tree(),
-      new Tree(),
-      new Tree(),
-      new Tree(),
-      new Tree(),
-      new Tree(),
-      new Tree(),
-      new Tree(),
-      new Tree(),
-      new Tree(),
-      new Tree(),
-      new Tree(),
-      new Tree(),
-      new Tree(),
-      new Tree(),
-    ];
+//     trash = [
+//       new Trash(),
+//       new Trash(),
+//       new Trash(),
+//       new Trash(),
+//       new Trash(),
+//       new Trash(),
+//       new Trash(),
+//       new Trash(),
+//       new Trash(),
+//       new Trash(),
+//       new Trash(),
+//       new Trash(),
+//     ];
 
-    trash = [
-      new Trash(),
-      new Trash(),
-      new Trash(),
-      new Trash(),
-      new Trash(),
-      new Trash(),
-    ];
+//     animals = [new Animal(), new Animal()];
 
-    animals = [new Animal(), new Animal()];
+//     weed = [
+//       new Weed(),
+//       new Weed(),
+//       new Weed(),
+//       new Weed(),
+//       new Weed(),
+//       new Weed(),
+//       new Weed(),
+//       new Weed(),
+//       new Weed(),
+//       new Weed(),
+//       new Weed(),
+//       new Weed(),
+//       new Weed(),
+//       new Weed(),
+//       new Weed(),
+//       new Weed(),
+//       new Weed(),
+//       new Weed(),
+//       new Weed(),
+//       new Weed(),
+//       new Weed(),
+//       new Weed(),
+//       new Weed(),
+//       new Weed(),
+//       new Weed(),
+//       new Weed(),
+//       new Weed(),
+//       new Weed(),
+//       new Weed(),
+//       new Weed(),
+//       new Weed(),
+//       new Weed(),
+//       new Weed(),
+//       new Weed(),
+//       new Weed(),
+//       new Weed(),
+//       new Weed(),
+//       new Weed(),
+//       new Weed(),
+//       new Weed(),
+//     ];
 
-    weed = [
-      new Weed(),
-      new Weed(),
-      new Weed(),
-      new Weed(),
-      new Weed(),
-      new Weed(),
-      new Weed(),
-      new Weed(),
-      new Weed(),
-      new Weed(),
-      new Weed(),
-      new Weed(),
-      new Weed(),
-      new Weed(),
-      new Weed(),
-      new Weed(),
-      new Weed(),
-      new Weed(),
-      new Weed(),
-      new Weed(),
-      new Weed(),
-      new Weed(),
-      new Weed(),
-      new Weed(),
-      new Weed(),
-      new Weed(),
-      new Weed(),
-      new Weed(),
-      new Weed(),
-      new Weed(),
-      new Weed(),
-      new Weed(),
-      new Weed(),
-      new Weed(),
-      new Weed(),
-      new Weed(),
-      new Weed(),
-      new Weed(),
-      new Weed(),
-      new Weed(),
-    ];
+//     dayOneNature = [
+//       new DayOneNature(),
+//       new DayOneNature(),
+//       new DayOneNature(),
+//       new DayOneNature(),
+//       new DayOneNature(),
+//       new DayOneNature(),
+//       new DayOneNature(),
+//     ];
 
-    dayOneNature = new DayOneNature();
-    start = false;
-  }
+//     dayOneNature = new DayOneNature();
+//     start = false;
+//   }
 
-  mainscreen.displayHotbar();
-  mainscreen.refreshScreen();
-}
+//   mainscreen.displayHotbar();
+//   mainscreen.refreshScreen();
+// }
 
-window.draw = draw;
-window.mousePressed = mousePressed;
+// window.draw = draw;
+// window.mousePressed = mousePressed;
