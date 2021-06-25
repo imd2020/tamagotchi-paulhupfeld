@@ -12,7 +12,6 @@ export default class Button {
     } else {
       fill(165, 93, 23);
     }
-    console.log(this.pressed);
     noStroke();
     rect(this.x, this.y, 150, 40);
     fill(0);

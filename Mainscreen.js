@@ -19,6 +19,7 @@ let buttons = [
   nextYearButton,
 ];
 
+<<<<<<< HEAD
 let transition = new Transition();
 let yearCounter = new YearCounter();
 
@@ -26,6 +27,11 @@ class Mainscreen {
   constructor() {
     this.year = 2021;
   }
+=======
+let yearCounter = new YearCounter();
+
+class Mainscreen {
+>>>>>>> parent of e8cde04 (kinda wrong)
   constructor() {}
 
   displayBackground() {
@@ -129,7 +135,10 @@ class Mainscreen {
 
       dayOneNature.display();
 
+<<<<<<< HEAD
       this.displayYearCounter();
+=======
+>>>>>>> parent of e8cde04 (kinda wrong)
       yearCounter.display();
 
       // yearCounter.animateYear();
@@ -164,9 +173,12 @@ let dayOneNature;
 
 function draw() {
   if (start) {
+<<<<<<< HEAD
     // for (let i; i++; i <= 20) {
     //   trees.push(new Tree());
     // }
+=======
+>>>>>>> parent of e8cde04 (kinda wrong)
     //   for (let i; i++; i <= 20) {
     //     trees.push(new Tree());
     //   }
@@ -251,13 +263,20 @@ function draw() {
     start = false;
   }
 
+<<<<<<< HEAD
   // if (nextYearButton.nextYear) {
   //   transition.display();
   // }
 
+=======
+>>>>>>> parent of e8cde04 (kinda wrong)
   mainscreen.displayHotbar();
   mainscreen.refreshScreen();
 }
 
 window.draw = draw;
+<<<<<<< HEAD
 window.mousePressed = mousePressed;
+=======
+window.mousePressed = mousePressed;
+>>>>>>> parent of e8cde04 (kinda wrong)
