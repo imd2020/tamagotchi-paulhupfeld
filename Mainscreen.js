@@ -5,7 +5,6 @@ import DayOneNature from "./DayOneNature.js";
 import Animal from "./Animal.js";
 import Trash from "./Trash.js";
 import Weed from "./Weed.js";
-import Transition from "./Transition.js";
 
 let nextYearButton = new NextYearButton(405, 520, "Nächstes Jahr");
 
@@ -17,8 +16,6 @@ let buttons = [
   new Button(225, 520, "Wild schießen"),
   nextYearButton,
 ];
-
-let transition = new Transition();
 
 class Mainscreen {
   constructor() {
@@ -99,20 +96,18 @@ class Mainscreen {
 
       this.displayBackground();
 
-      trees.forEach((tree) => {
-        tree.display();
+      console.log(trash);
+      concat1 = concat(animals, weed);
+      concat2 = concat(trees, trash);
+      allItems = concat(concat1, concat2);
+
+      // sort by value
+      allItems.sort(function (a, b) {
+        return a.y - b.y;
       });
 
-      trash.forEach((oneTrash) => {
-        oneTrash.display();
-      });
-
-      animals.forEach((animal) => {
-        animal.display();
-      });
-
-      weed.forEach((oneWeed) => {
-        oneWeed.display();
+      allItems.forEach((item) => {
+        item.display();
       });
 
       dayOneNature.display();
@@ -136,10 +131,13 @@ function mousePressed() {
 
 let start = true;
 
-let trees;
-let trash;
-let animals;
-let weed;
+let trees = [];
+let trash = [];
+let animals = [];
+let weed = [];
+let concat1 = [];
+let concat2 = [];
+let allItems = [];
 
 let dayOneNature;
 
@@ -228,10 +226,6 @@ function draw() {
     dayOneNature = new DayOneNature();
     start = false;
   }
-
-  // if (nextYearButton.nextYear) {
-  //   transition.display();
-  // }
 
   mainscreen.displayHotbar();
   mainscreen.refreshScreen();

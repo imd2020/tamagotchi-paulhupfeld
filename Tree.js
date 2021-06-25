@@ -23,37 +23,9 @@ export default class Tree {
   //added randomImage
   giveRandomParameters(r) {
     //random Coordinates
+
     this.x = random(-50, 640);
-<<<<<<< HEAD
-<<<<<<< HEAD
-    this.y = random(180, 360);
-=======
     this.y = random(200, 360);
-    // trage in array ein
->>>>>>> parent of e269ad9 (y sorted)
-
-    // if (freies Feld?){
-    // takenSpace.push([x, y, Weight, Hight]);
-    // }
-    // else {
-    // giveRandomParameters();
-    // }
-
-    //isSpaceFree{
-    // for every part of array -> (let i; i++; i < array.length) {} -> takenSpace[i];
-    // if (this.x + Weight < x || this.x > x + Weight || this.y + Height < y || this.y > y + Hight ){
-    //   return true;
-    // } else{
-    //   retun false;
-    // }
-
-    // }
-
-    //Achtung: vlt ist nicht mehr genug PLatz für alle Items
-=======
-    this.y = random(200, 360);
-    // trage in array ein
->>>>>>> parent of e269ad9 (y sorted)
 
     //random Image
     r = Math.random();
@@ -122,7 +94,6 @@ export default class Tree {
       if (this.laysDown === false) {
         this.placeItem(this.x, this.y, 0.11, this.tree);
       } else {
-        //placeItem(); nicht möglich, da this.stump.width viel zu hoch
         push();
         translate(this.x - 6, this.y - 5);
         scale(0.03);

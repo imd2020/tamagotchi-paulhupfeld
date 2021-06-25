@@ -52,9 +52,8 @@ export default class Animal {
 
   placeItem(x, y, s, i) {
     push();
-    // translate(x - i.width / 20, y - i.height / 10);
     translate(x, y);
-    scale(s);
+    scale(s + this.y / 7000);
     image(i, 0, 0);
     pop();
   }
@@ -68,7 +67,7 @@ export default class Animal {
     if (this.existing) {
       this.giveRandomParameters();
 
-      this.placeItem(this.x, this.y, 0.05, this.animal);
+      this.placeItem(this.x, this.y, 0.02, this.animal);
     }
   }
 }
